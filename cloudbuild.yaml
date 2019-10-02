@@ -1,15 +1,12 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/tecklearn/helloworldnode:latest', '.']
+  args: ['build', '-t', 'gcr.io/tecklearn/helloworldnode:$SHORT_SHA', '.']
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/tecklearn/helloworldnode:latest']
+  args: ['push', 'gcr.io/tecklearn/helloworldnode:$SHORT_SHA']
+
 - name: 'gcr.io/cloud-builders/kubectl'
-  id: Deploy
-  args:
-  - 'apply'
-  - '-f'
-  - 'kubernetes.yaml'
+  args: ['set', 'image', 'deployment/helloworldnode', 'helloworldnode=gcr.io/tecklearn/helloworldnode:$SHORT_SHA']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=haulcycle-cluster'
