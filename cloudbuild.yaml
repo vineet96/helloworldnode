@@ -1,9 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/tecklearn/helloworldnode:$SHORT_SHA', '.']
+  args: ['build', '-t', 'gcr.io/tecklearn/helloworldnode:latest', '.']
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/tecklearn/helloworldnode:$SHORT_SHA']
+  args: ['push', 'gcr.io/tecklearn/helloworldnode:latest']
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Deploy
   args:

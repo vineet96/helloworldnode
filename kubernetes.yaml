@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: helloworldnode
-        image: gcr.io/tecklearn/helloworldnode::COMMIT_SHA
+        image: gcr.io/tecklearn/helloworldnode:latest
         ports:
         - containerPort: 8080
 ---
