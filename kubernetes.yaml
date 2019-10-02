@@ -17,6 +17,7 @@ spec:
       containers:
       - name: helloworldnode
         image: gcr.io/tecklearn/helloworldnode:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---
