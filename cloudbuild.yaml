@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/teck-dev-haulcycle1-mckinsey/helloworldnode', '.']
+  args: ['build', '-t', 'gcr.io/teck-dev-haulcycle1-mckinsey/helloworldnode:$SHORT_SHA', '.']
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/teck-dev-haulcycle1-mckinsey/helloworldnode']
+  args: ['push', 'gcr.io/teck-dev-haulcycle1-mckinsey/helloworldnode:$SHORT_SHA']
